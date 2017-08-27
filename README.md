@@ -24,8 +24,8 @@ curl https://sh.rustup.rs -sSf | sh
 
 Para instalar o xargo execute o seguinte comando:
 
-cargo install xargo
-(o cargo já vem com a linguagem rust)
+(Debian e Derivados)
+sudo apt install cargo
 
 Para compilar o projeto execute o seguinte comando:
 
