@@ -14,7 +14,8 @@ mod vga_buffer;
 pub extern fn rust_main() {
 
     vga_buffer::clear_screen();
-    println!("Bem Vindo ao AntarticaOS{}", "!");
+    println!("Bem Vindo ao AntarticaOS 0.1.0{}", "!");
+    println!("O Sistema ainda esta em Desenvolvimento");
 
     loop {}
 }
