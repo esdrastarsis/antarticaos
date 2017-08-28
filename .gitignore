@@ -1,8 +1,3 @@
 /target/
 /build/
-<<<<<<< HEAD
 **/*.rs.bk
-=======
-**/*.rs.bk
-Cargo.lock
->>>>>>> c4eaf234f36eabd56e3e9729c74c8280df70b05f
