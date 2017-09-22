@@ -1,0 +1,6 @@
+[package]
+name = "console"
+version = "0.1.0"
+authors = ["Esdras Tarsis -  GNU/Linux Terminators"]
+
+[dependencies]

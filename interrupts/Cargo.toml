@@ -1,0 +1,9 @@
+[package]
+name = "interrupts"
+version = "0.1.0"
+authors = ["Esdras Tarsis - GNU/Linux Terminators"]
+
+[dependencies]
+spin = "0.4.5"
+x86 = "0.8.1"
+pic = { path = "../pic" }

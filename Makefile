@@ -1,41 +1,22 @@
-arch ?= x86_64
-kernel := build/kernel-$(arch).bin
-iso := build/AntarticaOS-$(arch).iso
-target ?= $(arch)-antarticaos
-rust_os := target/$(target)/debug/libantarticaos.a
+.PHONY: cargo test iso run
 
-linker_script := src/arch/$(arch)/linker.ld
-grub_cfg := src/arch/$(arch)/grub.cfg
-assembly_source_files := $(wildcard src/arch/$(arch)/*.asm)
-assembly_object_files := $(patsubst src/arch/$(arch)/%.asm, \
-	build/arch/$(arch)/%.o, $(assembly_source_files))
+cargo:
+	xargo build --release --target x86_64-antarticaos
 
-.PHONY: all clean run iso kernel
+test:
+	cd console && cargo test
+	cd interrupts && cargo test
+	cd keyboard && cargo test
+	cd pic && cargo test
 
-all: $(kernel)
+iso: cargo grub.cfg
+	mkdir -p target/isofiles/boot/grub
+	cp grub.cfg target/isofiles/boot/grub
+	cp target/x86_64-antarticaos/release/antarticaos target/isofiles/boot/
+	grub-mkrescue -o target/os.iso target/isofiles
+
+run: iso
+	qemu-system-x86_64 -cdrom target/os.iso
 
 clean:
-	@rm -r build
-
-run: $(iso)
-	@qemu-system-x86_64 -cdrom $(iso)
-
-iso: $(iso)
-
-$(iso): $(kernel) $(grub_cfg)
-	@mkdir -p build/isofiles/boot/grub
-	@cp $(kernel) build/isofiles/boot/kernel.bin
-	@cp $(grub_cfg) build/isofiles/boot/grub
-	@grub-mkrescue -o $(iso) build/isofiles 2> /dev/null
-	@rm -r build/isofiles
-
-$(kernel): kernel $(rust_os) $(assembly_object_files) $(linker_script)
-	@ld -n --gc-sections -T $(linker_script) -o $(kernel) $(assembly_object_files) $(rust_os)
-
-kernel:
-	@xargo build --target $(target)
-
-# compile assembly files
-build/arch/$(arch)/%.o: src/arch/$(arch)/%.asm
-	@mkdir -p $(shell dirname $@)
-	@nasm -felf64 $< -o $@
+	cargo clean

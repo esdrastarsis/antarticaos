@@ -31,16 +31,12 @@ Para instalar o xargo execute o seguinte comando:
 Para instalar o toolchain usado pelo projeto (especificado no arquivo
 `rust-toolchain`), execute:
 
-    $ rustup install nightly-2017-08-27
+    $ rustup install nightly-2017-09-22
 	$ rustup component add rust-src
 
 Para compilar o projeto execute o seguinte comando:
 
     $ make iso
-
-Se quiser compilar só o kernel:
-
-    $ make kernel
 
 Se você tiver o qemu, você pode compilar e rodar:
 
