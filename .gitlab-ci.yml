@@ -1,27 +1,24 @@
-language: rust
+# This file is a template, and might need editing before it works on your project.
+# Unofficial language image. Look for the different tagged releases at:
+# https://hub.docker.com/r/scorpil/rust/tags/
+image: "scorpil/rust:stable"
 
-rust:
-    - nightly
-  
-cache: cargo
+# Optional: Pick zero or more services to be used on all builds.
+# Only needed when using a docker container to run your tests in.
+# Check out: http://docs.gitlab.com/ce/ci/docker/using_docker_images.html#what-is-a-service
+#services:
+#  - mysql:latest
+#  - redis:latest
+#  - postgres:latest
 
-before_script:
- - rustup component add rust-src
- - (test -x $HOME/.cargo/bin/cargo-install-update || cargo install cargo-update)
- - (test -x $HOME/.cargo/bin/xargo || cargo install xargo)
- - cargo install-update -a
- 
- sudo: false
- 
- notifications:
-    email:
-        on_success: never
-        on_success: change
-    
-addons:
-  apt:
-    packages:
-      - nasm
-      
-script:
-  - make
+# Optional: Install a C compiler, cmake and git into the container.
+# You will often need this when you (or any of your dependencies) depends on C code.
+#before_script:
+#- apt-get update -yqq
+#- apt-get install -yqq --no-install-recommends build-essential
+
+# Use cargo to test the project
+test:cargo:
+  script:
+  - rustc --version && cargo --version      # Print version info for debugging
+  - cargo test --verbose --jobs 1 --release # Don't paralize to make errors more readable
