@@ -1,13 +1,13 @@
 [package]
 name = "antarticaos"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Esdras Tarsis - GNU/Linux Terminators"]
 build = "build.rs"
 
 [dependencies]
 rlibc = "1.0.0"
-spin = "0.4.5"
-lazy_static = { version = "0.2.8", features = ["spin_no_std"]}
+spin = "0.4.6"
+lazy_static = { version = "0.2.9", features = ["spin_no_std"]}
 x86 = "0.8.1"
 console = { path = "console" }
 interrupts = { path = "interrupts" }

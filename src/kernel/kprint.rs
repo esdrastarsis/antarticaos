@@ -1,6 +1,6 @@
 #[macro_export]
 macro_rules! kprintln {
-    ($ctx:ident, $fmt:expr) => (kprint!($ctx, concat!($fmt, "\n")));
+    ($ctx:ident, $fmt:expr) => (kprint!($ctx, concat!($fmt)));
     ($ctx:ident, $fmt:expr, $($arg:tt)*)  => (kprint!($ctx, concat!($fmt, "\n"), $($arg)*));
 }
 

@@ -1,0 +1,1 @@
+/home/esdras/Documentos/antarticaos/console/target/debug/vga-6ec24d42463e02ae: /home/esdras/Documentos/antarticaos/console/src/lib.rs /home/esdras/Documentos/antarticaos/console/src/color.rs /home/esdras/Documentos/antarticaos/console/tests/vga.rs
