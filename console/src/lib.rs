@@ -101,17 +101,23 @@ mod tests {
         let mut mock_memory = [0u8; ROWS * COL_BYTES];
         let mut vga = Vga::new(&mut mock_memory[..]);
 
-        let word = "word";
-        vga.write_str(word).unwrap();
+        let palavra = "palavra";
+        vga.write_str(palavra).unwrap();
 
-        assert_eq!(vga.buffer[0], 'w' as u8);
+        assert_eq!(vga.buffer[0], 'p' as u8);
         assert_eq!(vga.buffer[1], 0x02);
-        assert_eq!(vga.buffer[2], 'o' as u8);
+        assert_eq!(vga.buffer[2], 'a' as u8);
         assert_eq!(vga.buffer[3], 0x02);
-        assert_eq!(vga.buffer[4], 'r' as u8);
+        assert_eq!(vga.buffer[4], 'l' as u8);
         assert_eq!(vga.buffer[5], 0x02);
-        assert_eq!(vga.buffer[6], 'd' as u8);
+        assert_eq!(vga.buffer[6], 'a' as u8);
         assert_eq!(vga.buffer[7], 0x02);
+        assert_eq!(vga.buffer[8], 'v' as u8);
+        assert_eq!(vga.buffer[9], 0x02);
+        assert_eq!(vga.buffer[10], 'r' as u8);
+        assert_eq!(vga.buffer[11], 0x02);
+        assert_eq!(vga.buffer[12], 'a' as u8);
+        assert_eq!(vga.buffer[13], 0x02);
     }
 
     #[test]
