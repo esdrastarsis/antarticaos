@@ -10,6 +10,7 @@
 extern crate lazy_static;
 
 extern crate rlibc;
+
 extern crate spin;
 
 extern crate console;
@@ -38,14 +39,13 @@ lazy_static! {
 pub extern "C" fn kmain() -> ! {
     pic::remap();
 
-    let gpt = make_idt_entry!(isr13, {
+    let gpf = make_idt_entry!(isr13, {
         panic!("omg GPF");
     });
 
     let timer = make_idt_entry!(isr32, {
         pic::eoi_for(32);
     });
-
 
 let keyboard = make_idt_entry!(isr33, {
         let scancode = unsafe { inb(0x60) };
@@ -61,15 +61,16 @@ let keyboard = make_idt_entry!(isr33, {
         pic::eoi_for(33);
     });
 
-    CONTEXT.idt.set_handler(13, gpt);
+    CONTEXT.idt.set_handler(13, gpf);
     CONTEXT.idt.set_handler(32, timer);
     CONTEXT.idt.set_handler(33, keyboard);
 
     CONTEXT.idt.enable_interrupts();
 
     kprintln!(CONTEXT, "    #######################################################################");
-    kprintln!(CONTEXT, "\n    ######### Antartica OS - Versao 0.1.2, GNU/Linux Terminators ##########");
+    kprintln!(CONTEXT, "\n    ######### Antartica OS - Versao 0.1.3, GNU/Linux Terminators ##########");
     kprintln!(CONTEXT, "\n    #######################################################################\n");
+
     kprintln!(CONTEXT, "\nterminator@AntarticaOS:~$ ");
 
     loop {}

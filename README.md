@@ -31,7 +31,7 @@ Para instalar o xargo execute o seguinte comando:
 Para instalar o toolchain usado pelo projeto (especificado no arquivo
 `rust-toolchain`), execute:
 
-    $ rustup install nightly-2017-09-22
+    $ rustup install nightly-2017-10-28
 	$ rustup component add rust-src
 
 Para compilar o projeto execute o seguinte comando:

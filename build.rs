@@ -6,7 +6,7 @@ fn main() {
     let out_dir = env::var("OUT_DIR").unwrap();
 
     assert!(Command::new("nasm")
-                .args(&["src/asm/boot.asm", "-felf64", "-o"])
+                .args(&["src/asm/boot/x86/boot.asm", "-felf64", "-o"])
                 .arg(&format!("{}/boot.o", out_dir))
                 .status()
                 .expect("Erro na Compilação do boot.asm, PorFavor Instale o Netwide Assembler (nasm)")
@@ -17,7 +17,7 @@ fn main() {
                 .args(&["crus", "libboot.a", "boot.o"])
                 .current_dir(&Path::new(&out_dir))
                 .status()
-                .expect("Falha ao Executar o ar")
+                .expect("Falha ao Executar o comando ar")
                 .success(),
             "Falha no Comando ar");
 

@@ -1,4 +1,5 @@
 #![feature(const_fn)]
+#![feature(const_unique_new)]
 #![no_std]
 
 extern crate console;
