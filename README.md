@@ -1,20 +1,16 @@
-O Antartica OS é um Sistema Operacional ainda em Desenvolvimento, criado pelo Grupo GNU/Linux Terminators no Telegram
+## O Antartica OS é um Sistema Operacional (Hobby OS) Open Source, criado por Esdras Tarsis, com o propósito de aprendizado de implementação de Sistemas Operacionais
 
-Grupo: https://t.me/GNULinux_Terminators
+Para compilar é necessário ter os seguintes pacotes instalados no seu sistema (GNU/Linux):
 
-Para compilar é necessário ter os seguintes programas:
-
-nasm, qemu, xorriso build-essential rust xargo
-
-Para instalar os mesmos execute os seguintes comandos (Debian e Derivados):
+### Debian e Derivados:
 
     $ sudo apt-get install nasm xorriso qemu build-essential
 
-(Arch Linux e Derivados):
+### Arch Linux e Derivados:
 
     $ sudo pacman -S --needed binutils grub mtools libisoburn nasm qemu
 
-(Fedora):
+### Fedora:
 
     $ sudo dnf install nasm xorriso qemu
 
@@ -31,13 +27,13 @@ Para instalar o xargo execute o seguinte comando:
 Para instalar o toolchain usado pelo projeto (especificado no arquivo
 `rust-toolchain`), execute:
 
-    $ rustup install nightly-2017-10-28
+    $ rustup install nightly-2018-03-15
 	$ rustup component add rust-src
 
 Para compilar o projeto execute o seguinte comando:
 
     $ make iso
 
-Se você tiver o qemu, você pode compilar e rodar:
+Se você tiver o qemu, você pode compilar e rodar em seguida:
 
     $ make run

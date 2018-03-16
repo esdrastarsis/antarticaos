@@ -16,7 +16,8 @@
 		"gcc": [
 			"-Wl,--script=linker.ld",
 			"-Wl,--nmagic",
-			"-nostartfiles"
+			"-nostartfiles",
+			"-no-pie"
 		]
 	},
 	"disable-redzone": true,

@@ -67,11 +67,11 @@ let keyboard = make_idt_entry!(isr33, {
 
     CONTEXT.idt.enable_interrupts();
 
-    kprintln!(CONTEXT, "    #######################################################################");
-    kprintln!(CONTEXT, "\n    ######### Antartica OS - Versao 0.1.3, GNU/Linux Terminators ##########");
-    kprintln!(CONTEXT, "\n    #######################################################################\n");
+    kprintln!(CONTEXT, "    +----------------------------------------------------------------------+");
+    kprintln!(CONTEXT, "\n    |                     Antartica OS - Versao 0.1.3                      |");
+    kprintln!(CONTEXT, "\n    +----------------------------------------------------------------------+\n");
 
-    kprintln!(CONTEXT, "\nterminator@AntarticaOS:~$ ");
+    kprintln!(CONTEXT, "\nuser@AntarticaOS:~$ ");
 
     loop {}
 }

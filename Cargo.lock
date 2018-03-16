@@ -1,4 +1,4 @@
-[root]
+[[package]]
 name = "antarticaos"
 version = "0.1.3"
 dependencies = [
